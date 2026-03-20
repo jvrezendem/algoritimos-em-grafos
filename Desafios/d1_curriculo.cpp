@@ -20,8 +20,7 @@ vector<vector<int>> matriz_alcançabilidade(vector<vector<int>> &MA)
     vector<vector<int>> MAlc = MA;
 
     //algoritmo de Warshall
-    for(int k = 0; k < n; k++){
-        for(int i = 0; i < n; i++){
+    for(int k = 0; k < n; k++){        for(int i = 0; i < n; i++){
             for(int j = 0; j < n; j++){
                 if(MAlc[i][k] == 1 and MAlc[k][j] == 1)
                     MAlc[i][j] =1;
