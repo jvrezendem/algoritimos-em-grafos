@@ -5,25 +5,21 @@
 
 using namespace std;
 
-#define BRANCO 0
-#define CINZA 1
-#define PRETO 2
-
 stack<int> bfs_ordenacao_topologica(vector<vector<int>> &lista_adjacencia)
 {
     //definição das estruturas auxiliares
-    vector<int> cor(lista_adjacencia.size());
-    vector<int> grau(lista_adjacencia.size());
+    vector<int> grau(lista_adjacencia.size(), 0);
     stack<int> resposta;
     queue<int> fila;
 
     //definir os graus dos vertices
     for(int i = 0; i < lista_adjacencia.size(); i++){
-        grau.push_back(lista_adjacencia[i].size());   
+        for(auto vizinho: lista_adjacencia[i])
+            grau[vizinho]++;  
     }
 
     //escolher vertices de grau 0 para começar a resposta
-    for(int i = 0; i < grau.size(); i++){
+    for(int i = 0; i < lista_adjacencia.size(); i++){
         if(grau[i] == 0){
             fila.push(i);
         }
@@ -49,24 +45,25 @@ stack<int> bfs_ordenacao_topologica(vector<vector<int>> &lista_adjacencia)
 
 int main(){
     
-    int n;
-    cin >> n;
+    int n = 9;
 
     //lista de adjacencia
     vector<vector<int>> lista_adjacencia(n);
 
-    for(int i = 0; i < n; i++){
-        int vizinho = 0;
-        cout << "vizinhos do vertice " << i <<": ";
-        while(vizinho != -1){
-            cin >> vizinho;
-            if(vizinho != -1)
-                lista_adjacencia[i].push_back(vizinho);
-        }
+    lista_adjacencia[0].push_back(1);
+    lista_adjacencia[0].push_back(4);
 
-        cout << "fim dos vizinhos do vertice "<<i<<endl;
+    lista_adjacencia[1].push_back(2);
+    lista_adjacencia[1].push_back(4);
 
-    }
+    lista_adjacencia[2].push_back(8);
+
+    lista_adjacencia[3].push_back(4);
+
+    lista_adjacencia[6].push_back(7);
+    lista_adjacencia[6].push_back(2);
+
+    lista_adjacencia[7].push_back(8);
 
     stack<int> oredem_topologica = bfs_ordenacao_topologica(lista_adjacencia);
 
