@@ -12,7 +12,7 @@ stack<int> bfs_ordenacao_topologica(vector<vector<int>> &lista_adjacencia)
     stack<int> resposta;
     queue<int> fila;
 
-    //definir os graus dos vertices
+    //definir os graus de ENTRADA dos vertices
     for(int i = 0; i < lista_adjacencia.size(); i++){
         for(auto vizinho: lista_adjacencia[i])
             grau[vizinho]++;  
