@@ -43,6 +43,7 @@ void tarjan(vector<vector<int>> &lista_adjacencia, int origem, vector<int> &low,
             low[origem] = min(low[origem], d[vizinho]);
         }
     }
+
 }
 
 int main()
@@ -54,7 +55,7 @@ int main()
     vector<int> low(n_vertices, NAO_VISITADO);
     vector<int> d(n_vertices, NAO_VISITADO);
     vector<int> pai(n_vertices, -1);
-    int cont_dfs = 1;
+    int cont_dfs = 0;
     int filhos_raiz = 0;
     articulacao.assign(n_vertices, false);
 
